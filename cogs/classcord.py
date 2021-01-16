@@ -48,7 +48,7 @@ class ClassCord(commands.Cog):
             self.class_reminder.cancel()
             return await self._channel.send("No time or invalid time was provided. Reminder cancelled.")
 
-        now = datetime.datetime.utcnow()
+        now = datetime.datetime.now(tz=self.bot.TZ)
         class_at = now.replace(hour=target.hour, minute=target.minute, second=0)
 
         if now > class_at:
@@ -91,7 +91,7 @@ class ClassCord(commands.Cog):
     async def reminder_time(self, ctx, hour: int, minute: int):
         """Set reminder time.
 
-        The time should in 24-hour format and in UTC.
+        The time should in 24-hour format and in bot's timezone.
         """ 
         if hour not in range(24) and minute not in range(60):
             return await ctx.send("Hour and minute should be between (0, 23) and (0, 59) respectively.")

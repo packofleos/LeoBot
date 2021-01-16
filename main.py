@@ -16,6 +16,7 @@ bot = commands.Bot(
 
 # bot variables
 bot.OK_EMOJI = "sadcatthumbsup:758224306362253323"
+bot.TZ = config.TIMEZONE 
 
 initial_extensions = (
     'jishaku',
